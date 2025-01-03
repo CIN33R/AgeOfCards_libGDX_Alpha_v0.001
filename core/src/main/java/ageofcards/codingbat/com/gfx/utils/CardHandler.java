@@ -1,6 +1,7 @@
 package ageofcards.codingbat.com.gfx.utils;
 
 import ageofcards.codingbat.com.gfx.assets.cards.Card;
+import ageofcards.codingbat.com.gfx.assets.cards.CardActor;
 import ageofcards.codingbat.com.gfx.assets.cards.staticcards.TestCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -16,7 +17,7 @@ public class CardHandler {
 
     private final String primaryColorSheetPath = "primaryColorSheet.png";
 
-    private Array<TestCard> testCardArray;
+    private Array<CardActor> testCardArray;
 
     private CardHandler() {
         spriteOnSheetHeight = Card.ON_SCREEN_DEFAULT_HEIGHT;
@@ -35,7 +36,7 @@ public class CardHandler {
         return cardHandler;
     }
 
-    private void createTestCardArray(String path, String imageNamePrefix, Array<TestCard> testCardArray) {
+    private void createTestCardArray(String path, String imageNamePrefix, Array<CardActor> testCardArray) {
         Texture sheet = new Texture(Gdx.files.internal(path));
         Pixmap pixmap = new Pixmap(Gdx.files.internal(path));
 
@@ -52,13 +53,13 @@ public class CardHandler {
                     }
                 }
                 if(solidFound) {
-                    testCardArray.add(new TestCard(new TextureRegion(sheet, c, r, spriteOnSheetWidth, spriteOnSheetHeight), count++, (imageNamePrefix+"_"+count)));
+                    testCardArray.add(new CardActor(new TextureRegion(sheet, c, r, spriteOnSheetWidth, spriteOnSheetHeight), count++, (imageNamePrefix+"_"+count)));
                 }
             }
         }
     }
 
-    public Array<TestCard> getTestCardArray() {
+    public Array<CardActor> getTestCardActorArray() {
         return testCardArray;
     }
 }
